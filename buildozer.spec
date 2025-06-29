@@ -1,13 +1,13 @@
 [app]
 
 # (str) Title of your application
-title = DareBaste
+title = ClosedDoor
 
 # (str) Package name
-package.name = DareBaste
+package.name = ClosedDoor
 
 # (str) Package domain (needed for android/ios packaging)
-package.domain = org.DareBaste
+package.domain = org.ClosedDoor
 
 # (str) Source code where the main.py live
 source.dir = .
