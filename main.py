@@ -13,7 +13,7 @@ import arabic_reshaper
 from bidi.algorithm import get_display
 from kivy.core.text import LabelBase
 
-LabelBase.register(name='Vazir', fn_regular='./Vazirmatn-Regular.ttf')
+LabelBase.register(name='Vazir', fn_regular='Vazirmatn-Regular.ttf')
 kivy.resources.resource_add_path('.')
 
 
