@@ -10,7 +10,6 @@ from kivy.properties import ListProperty, StringProperty
 from functools import partial
 import random
 import arabic_reshaper
-from bidi.algorithm import get_display
 from kivy.core.text import LabelBase
 
 LabelBase.register(name='Vazir', fn_regular='Vazirmatn-Regular.ttf')
@@ -19,8 +18,7 @@ kivy.resources.resource_add_path('.')
 
 def fix_persian_text(text):
     reshaped_text = arabic_reshaper.reshape(str(text))
-    bidi_text = get_display(reshaped_text)
-    return bidi_text
+    return reshaped_text[::-1]
 
 
 class StyledScreen(Screen):
@@ -108,7 +106,7 @@ class MenuScreen(StyledScreen):
         layout = BoxLayout(orientation='vertical', spacing=15, padding=[40, 100, 40, 100])
 
         title_text = fix_persian_text("در بسته") 
-        subtitle_text = fix_persian_text("(نسخه آزمایشی)")
+        subtitle_text = fix_persian_text(")نسخه آزمایشی(")
 
         title = Label(text=title_text, font_name='Vazir', font_size='48sp',
                       color=(1, 1, 1, 1), halign='center', valign='middle')
@@ -158,7 +156,7 @@ class RoomScreen(StyledScreen):
         title = Label(text=fix_persian_text(f"مرحله {self.manager.current_stage}"), font_name='Vazir',
                       font_size='30sp', color=(0, 0, 0, 1))
         detail_label = Label(
-            text=fix_persian_text("به جزئیات زیر به مدت 8 ثانیه دقت کنید."),
+            text=fix_persian_text("  به جزئیات زیر به مدت 8 ثانیه دقت کنید."),
             font_name='Vazir', font_size='18sp', color=(0, 0, 0, 1))
 
         text_bg.add_widget(title)
