@@ -1,22 +1,22 @@
 [app]
 
 # (str) Title of your application
-title = SampleApp
+title = DareBaste
 
 # (str) Package name
-package.name = nfsApk
+package.name = DareBaste
 
 # (str) Package domain (needed for android/ios packaging)
-package.domain = org.novfensec
+package.domain = org.DareBaste
 
 # (str) Source code where the main.py live
 source.dir = .
 
 # (list) Source files to include (let empty to include all the files)
-source.include_exts = py,png,jpg,kv,atlas
+source.include_exts = py,png,jpg,kv,atlas,ttf
 
 # (list) List of inclusions using pattern matching
-source.include_patterns = images/*.png
+source.include_patterns = images/*.jpg
 
 # (list) Source files to exclude (let empty to not exclude anything)
 #source.exclude_exts = spec
@@ -37,7 +37,7 @@ version = 0.1
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy==2.3.0,kivymd==1.1.1,pillow==10.3.0,python-bidi,arabic_reshaper
+requirements = python3,kivy==2.2.1,python-bidi,arabic_reshaper,
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
@@ -67,7 +67,7 @@ orientation = portrait
 osx.python_version = 3
 
 # Kivy version to use
-osx.kivy_version = 1.9.1
+osx.kivy_version = 2.2.1
 
 #
 # Android specific
