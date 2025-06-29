@@ -12,7 +12,7 @@ import random
 import arabic_reshaper
 from kivy.core.text import LabelBase
 
-LabelBase.register(name='Vazir', fn_regular='Vazirmatn-Regular.ttf')
+LabelBase.register(name='Vazir', fn_regular='font/Vazirmatn-Regular.ttf')
 kivy.resources.resource_add_path('.')
 
 
