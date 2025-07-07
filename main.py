@@ -65,12 +65,17 @@ class StyledButton(Button):
         self.border_rect.pos = self.pos
         self.border_rect.size = self.size
 
+    def on_touch_down(self, touch):
+        if self.collide_point(*touch.pos):
+            return super().on_touch_down(touch)
+        return False
+
 GAME_STAGES = {
     1: {
         "environment": [
             {"q": "چند تا ماشین در اتاق بود؟", "a": ["چهارتا", "سه تا", "دو تا", "یکی"]},
             {"q": "کدام گزینه در اتاق نبود؟", "a": ["توپ", "سطل اشغال", "چراغ مطالعه", "جامدادی"]},
-            {"q": "صندلی چند تا چرخ داشت؟", "a": ["سه تا", "چهار تا", "هیچی", "پنج تا"]}
+            {"q": " صندلی چند تا چرخ داشت؟", "a": ["سه تا", "چهار تا", "هیچی", "پنج تا"]}
         ]
     },
     2: {
@@ -81,6 +86,8 @@ GAME_STAGES = {
         ],
         "social": [
             {"q": "در صف چیکار میکنی؟", "a": ["صبر می‌کنم", "جلو می‌روم", "داد می‌زنم", "قهر می‌کنم"]},
+            {"q": "یکی زمین خورد.", "a": ["کمک می‌کنی", "می‌خندی", "رد می‌شی", "نگاه می‌کنی"]},
+            {"q": "یکی گریه می‌کنه.", "a": ["دلداری می‌دی", "بی‌تفاوتی", "مسخره می‌کنی", "دور می‌شی"]},
         ]
     }
 }
@@ -139,14 +146,14 @@ class RoomScreen(StyledScreen):
         text_bg.bind(pos=self.update_text_bg, size=self.update_text_bg)
 
         title = Label(text=fix_persian_text(f"مرحله {self.manager.current_stage}"), font_name='Vazir', font_size=dp(30), color=(0, 0, 0, 1))
-        detail_label = Label(text=fix_persian_text("  به جزئیات زیر به مدت 8 ثانیه دقت کنید."), font_name='Vazir', font_size=dp(18), color=(0, 0, 0, 1))
+        detail_label = Label(text=fix_persian_text("  به تصویر به مدت 8 ثانیه دقت کنید."), font_name='Vazir', font_size=dp(18), color=(0, 0, 0, 1))
 
         text_bg.add_widget(title)
         text_bg.add_widget(detail_label)
         main_layout.add_widget(text_bg)
         self.add_widget(main_layout)
 
-        Clock.schedule_once(self.go_to_questions, 8)
+        Clock.schedule_once(self.go_to_questions, 1)
 
     def update_text_bg(self, instance, value):
         self.text_bg_rect.pos = instance.pos
